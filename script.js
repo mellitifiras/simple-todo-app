@@ -5,8 +5,9 @@ const todoContainer = document.querySelector('.todo-container');
 const checkButton = document.querySelectorAll(".ckeckButton")
 const removeButton = document.querySelector(".fa-times")
 const filterTodo = document.querySelector('.filter-todo')
+let todoNumber = localStorage.length
 /* event listneners */
-
+console.log(localStorage.key(0))
 addButton.addEventListener('click',addToDo);
 filterTodo.addEventListener('click',myfunc)
 
@@ -15,6 +16,25 @@ document.body.addEventListener('keyup', function(event){
        addButton.click()
    }
 })
+
+if(localStorage.length>0){
+    for(let i =0; i<localStorage.length;i++){
+        let todoText = localStorage.getItem(localStorage.key(i))
+        let todoDiv = document.createElement('div');
+        todoDiv.classList.add('todo');
+        let todoTextDiv = document.createElement('div');
+        todoTextDiv.classList.add('todo-text');
+        todoTextDiv.innerText = todoText;
+        todoDiv.appendChild(todoTextDiv);
+        todoContainer.appendChild(todoDiv);
+        let controls = document.createElement('div');
+        controls.classList.add('controls');
+        controls.innerHTML = '<i class="fas fa-check-square"></i> <i class="fas fa-times"></i>';
+        todoDiv.appendChild(controls);
+        todoInput.value = "";
+        todoDiv.addEventListener('click',checkTodo);
+    }
+}
 
 /* Functions */
 
@@ -37,6 +57,8 @@ function addToDo(){
         controls.classList.add('controls');
         controls.innerHTML = '<i class="fas fa-check-square"></i> <i class="fas fa-times"></i>';
         todoDiv.appendChild(controls);
+        localStorage.setItem('todo'+todoNumber,todoText)
+        todoNumber += 1
         todoInput.value = "";
         todoDiv.addEventListener('click',checkTodo);
     }
@@ -56,10 +78,7 @@ function checkTodo(e){
             setTimeout(() => {
                 e.path[3].removeChild(e.path[2])
             }, 600);
-            
     }
-    
-    
 }
 
 function myfunc(e){
