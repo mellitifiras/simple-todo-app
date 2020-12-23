@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List By Firas Melliti</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+      crossorigin="anonymous"
+    />
+</head>
+<body>
+    <div class="container">
+        <div class="todo-add-container">
+            <input id="todo-input" type="text" >
+            <i class="fas fa-plus-square add-button"></i>
+        </div>
+        <div class="filter-todo">
+            <h2>Filter: </h2>
+            <div class="choice"><input type="radio" id="all" name="todo-choice"><label for="all">All</label></div>
+            <div class="choice"><input type="radio" id="uncompleted" name="todo-choice"><label for="uncompleted">Uncompleted</label></div>
+            <div class="choice"><input type="radio" id="completed" name="todo-choice"><label for="completed">Completed</label></div>
+        </div>
+        <div class="todo-container">
+        </div>
+    </div>
+     
+    <script src="script.js"></script>
+</body>
+</html>
